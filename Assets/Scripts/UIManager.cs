@@ -15,6 +15,8 @@ namespace Sayan.UnityCalculator
             OnClearAll();
         }
 
+        // Get value from Button
+
         public void OnButtonClick(string value)
         {
             if (!string.IsNullOrEmpty(resultText.text.ToString()))
@@ -34,6 +36,7 @@ namespace Sayan.UnityCalculator
             expressionText.text = expression;
         }
 
+        // Call on eual button
         public void OnEqualClick()
         {
             if (string.IsNullOrEmpty(expression)) return;
@@ -41,7 +44,7 @@ namespace Sayan.UnityCalculator
             expressionText.text = "";
             resultText.text = result.ToString();
         }
-
+        // clear text
         public void OnClearAll()
         {
             expression = "";

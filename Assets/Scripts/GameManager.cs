@@ -24,6 +24,7 @@ namespace Sayan.UnityCalculator
             return CalculateWithRule(storeDigit);
         }
 
+        // Separate Number and Operator from left to right
         private List<string> SeparateNumbersAndOperators(string expression)
         {
             List<string> storeDigit = new List<string>();
@@ -53,6 +54,8 @@ namespace Sayan.UnityCalculator
 
             return storeDigit;
         }
+
+        // Calculation Part
 
         private float CalculateWithRule(List<string> parts)
         {
@@ -93,6 +96,7 @@ namespace Sayan.UnityCalculator
             for (int i = 1; i < parts.Count; i += 2)
             {
                 string symbol = parts[i];
+                Debug.Log(symbol);
                 float nextNumber = float.Parse(parts[i + 1]);
 
                 if (symbol == "+")
