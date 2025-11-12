@@ -19,22 +19,36 @@ namespace Sayan.UnityCalculator
 
         public void OnButtonClick(string value)
         {
-            if (!string.IsNullOrEmpty(resultText.text.ToString()))
+            if (!string.IsNullOrEmpty(resultText.text))
             {
-                expression = "";
-                resultText.text = "";
-            }
+                bool isOperator = value == "+" || value == "-" || value == "*" || value == "/";
 
-            if (value == ".")
+                if (isOperator)
+                {
+                    expression = resultText.text + value;
+                    resultText.text = "";
+                }
+                else
+                {
+                    expression = "";
+                    resultText.text = "";
+                    expression += value;
+                }
+            }
+            else
             {
-                string[] parts = expression.Split('+', '-', '*', '/');
-                string currentPart = parts[parts.Length - 1];
-                if (currentPart.Contains(".")) return;
-            }
+                if (value == ".")
+                {
+                    string[] parts = expression.Split('+', '-', '*', '/');
+                    string currentPart = parts[parts.Length - 1];
+                    if (currentPart.Contains(".")) return;
+                }
 
-            expression += value;
+                expression += value;
+            }
             expressionText.text = expression;
         }
+
 
         // Call on eual button
         public void OnEqualClick()
